@@ -1,0 +1,31 @@
+<div class="streak-tracker-card">
+  <div class="streak-header">
+    <div class="flame-icon-box">
+      <span class="flame-symbol">🔥</span>
+    </div>
+    <div class="streak-info">
+      <span class="streak-label">Streak Tracker</span>
+      <div class="streak-count">
+        <span class="count">{{ streak }}</span>
+        <span class="unit">days streak</span>
+      </div>
+      <p class="goal-text">Goal: {{ nextMilestone.days }} days for {{ nextMilestone.label }} ({{ nextMilestone.reward }})</p>
+    </div>
+  </div>
+
+  <div class="streak-progress-section">
+    <div class="week-bubbles">
+      <div *ngFor="let day of weekDays" class="day-bubble" [ngClass]="{ active: day.isActive, today: day.isToday }">
+        <span class="day-icon">{{ day.isActive ? '🔥' : day.dayNumber }}</span>
+        <span class="day-name">{{ day.dayName }}</span>
+      </div>
+    </div>
+
+    <div class="milestone-progress">
+      <div class="progress-bar-container">
+        <div class="progress-bar-fill" [style.width.%]="progressToNext"></div>
+      </div>
+      <span class="progress-percentage">{{ progressToNext }}%</span>
+    </div>
+  </div>
+</div>

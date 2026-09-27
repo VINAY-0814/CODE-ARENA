@@ -1,0 +1,46 @@
+[
+  {
+    "name": "System Admin",
+    "username": "admin",
+    "email": "admin@codearena.dev",
+    "password": "$2b$10$J.rDqHMFeoawLn4vxzeGqe4xQ/..suEiH0FSDq5PexcZ4Osefswp6",
+    "profileImage": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80",
+    "role": "admin",
+    "xp": 1450,
+    "level": 6,
+    "streak": 12,
+    "lastActiveDate": "2026-09-27T16:06:52.958Z",
+    "problemsSolved": 8,
+    "totalSubmissions": 14,
+    "solvedProblemIds": [],
+    "bio": "CodeArena Administrator & Platform Architect.",
+    "githubUrl": "https://github.com/codearena-admin",
+    "createdAt": "2026-09-27T14:58:53.575Z",
+    "updatedAt": "2026-09-27T16:06:52.958Z",
+    "id": "e4e194fa8adc699c4ce24a15",
+    "_id": "e4e194fa8adc699c4ce24a15"
+  },
+  {
+    "name": "Alex Rivera",
+    "username": "alex_codes",
+    "email": "alex@codearena.dev",
+    "password": "$2b$10$J.rDqHMFeoawLn4vxzeGqewZBwp2mZnxde6ldEhJtB10rBhH4FQpO",
+    "profileImage": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80",
+    "role": "user",
+    "xp": 1000,
+    "level": 5,
+    "streak": 5,
+    "lastActiveDate": "2026-09-27T16:06:59.868Z",
+    "problemsSolved": 6,
+    "totalSubmissions": 13,
+    "solvedProblemIds": [
+      "a47e8c2843ff449d6eedc730"
+    ],
+    "bio": "Competitive programmer, full-stack enthusiast, and algorithm optimizer.",
+    "githubUrl": "https://github.com/alexrivera",
+    "createdAt": "2026-09-27T14:58:53.575Z",
+    "updatedAt": "2026-09-27T16:06:59.868Z",
+    "id": "40b0f68cecb13b2fb452992e",
+    "_id": "40b0f68cecb13b2fb452992e"
+  }
+]

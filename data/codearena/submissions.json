@@ -1,0 +1,485 @@
+[
+  {
+    "userId": "e4e194fa8adc699c4ce24a15",
+    "username": "admin",
+    "userProfileImage": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80",
+    "problemId": "a47e8c2843ff449d6eedc730",
+    "problemTitle": "Two Sum",
+    "language": "javascript",
+    "sourceCode": "function twoSum(nums, target) {\n  // Write your code here\n  const map = new Map();\n  for (let i = 0; i < nums.length; i++) {\n    const diff = target - nums[i];\n    if (map.has(diff)) {\n      return [map.get(diff), i];\n    }\n    map.set(nums[i], i);\n  }\n  return [];\n}",
+    "status": "Accepted",
+    "testCasesPassed": 5,
+    "totalTestCases": 5,
+    "executionTime": 28,
+    "memoryUsed": 1420,
+    "score": 50,
+    "details": [
+      {
+        "testCaseNumber": 1,
+        "passed": true,
+        "executionTimeMs": 6,
+        "isHidden": false
+      },
+      {
+        "testCaseNumber": 2,
+        "passed": true,
+        "executionTimeMs": 6,
+        "isHidden": false
+      },
+      {
+        "testCaseNumber": 3,
+        "passed": true,
+        "executionTimeMs": 6,
+        "isHidden": false
+      },
+      {
+        "testCaseNumber": 4,
+        "passed": true,
+        "executionTimeMs": 6,
+        "isHidden": true
+      },
+      {
+        "testCaseNumber": 5,
+        "passed": true,
+        "executionTimeMs": 6,
+        "isHidden": true
+      }
+    ],
+    "submittedAt": "2026-09-27T12:58:53.577Z",
+    "id": "ce4599de76ddad605e856f5b",
+    "_id": "ce4599de76ddad605e856f5b"
+  },
+  {
+    "userId": "40b0f68cecb13b2fb452992e",
+    "username": "alex_codes",
+    "userProfileImage": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80",
+    "problemId": "b8d272ac44851a447229dd46",
+    "problemTitle": "Valid Palindrome",
+    "language": "javascript",
+    "sourceCode": "function isPalindrome(s) {\n  const cleaned = s.toLowerCase().replace(/[^a-z0-9]/g, '');\n  return cleaned === cleaned.split('').reverse().join('');\n}",
+    "status": "Accepted",
+    "testCasesPassed": 5,
+    "totalTestCases": 5,
+    "executionTime": 19,
+    "memoryUsed": 1210,
+    "score": 20,
+    "details": [
+      {
+        "testCaseNumber": 1,
+        "passed": true,
+        "executionTimeMs": 4,
+        "isHidden": false
+      },
+      {
+        "testCaseNumber": 2,
+        "passed": true,
+        "executionTimeMs": 4,
+        "isHidden": false
+      },
+      {
+        "testCaseNumber": 3,
+        "passed": true,
+        "executionTimeMs": 4,
+        "isHidden": false
+      },
+      {
+        "testCaseNumber": 4,
+        "passed": true,
+        "executionTimeMs": 4,
+        "isHidden": true
+      },
+      {
+        "testCaseNumber": 5,
+        "passed": true,
+        "executionTimeMs": 4,
+        "isHidden": true
+      }
+    ],
+    "submittedAt": "2026-09-27T09:58:53.577Z",
+    "id": "a31852080a55ec995d1c7ad1",
+    "_id": "a31852080a55ec995d1c7ad1"
+  },
+  {
+    "userId": "40b0f68cecb13b2fb452992e",
+    "username": "alex_codes",
+    "userProfileImage": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80",
+    "problemId": "a47e8c2843ff449d6eedc730",
+    "problemTitle": "Two Sum",
+    "language": "javascript",
+    "sourceCode": "function twoSum(nums, target) { const map = new Map(); for (let i = 0; i < nums.length; i++) { const diff = target - nums[i]; if (map.has(diff)) return [map.get(diff), i]; map.set(nums[i], i); } return []; }",
+    "status": "Wrong Answer",
+    "testCasesPassed": 4,
+    "totalTestCases": 5,
+    "executionTime": 373,
+    "memoryUsed": 6714,
+    "score": 40,
+    "details": [
+      {
+        "testCaseNumber": 1,
+        "passed": true,
+        "input": "{\"nums\":[2,7,11,15],\"target\":9}",
+        "expectedOutput": "[0,1]",
+        "actualOutput": "[0,1]",
+        "executionTimeMs": 80,
+        "memoryUsedKb": 1382,
+        "isHidden": false
+      },
+      {
+        "testCaseNumber": 2,
+        "passed": true,
+        "input": "{\"nums\":[3,2,4],\"target\":6}",
+        "expectedOutput": "[1,2]",
+        "actualOutput": "[1,2]",
+        "executionTimeMs": 72,
+        "memoryUsedKb": 1293,
+        "isHidden": false
+      },
+      {
+        "testCaseNumber": 3,
+        "passed": true,
+        "input": "{\"nums\":[3,3],\"target\":6}",
+        "expectedOutput": "[0,1]",
+        "actualOutput": "[0,1]",
+        "executionTimeMs": 80,
+        "memoryUsedKb": 1421,
+        "isHidden": false
+      },
+      {
+        "testCaseNumber": 4,
+        "passed": false,
+        "input": "[Hidden Test Case]",
+        "expectedOutput": "[Hidden Test Case]",
+        "actualOutput": "[Hidden Output]",
+        "error": "Expected [0,4], received [2,3]",
+        "executionTimeMs": 69,
+        "memoryUsedKb": 1432,
+        "isHidden": true
+      },
+      {
+        "testCaseNumber": 5,
+        "passed": true,
+        "input": "[Hidden Test Case]",
+        "expectedOutput": "[Hidden Test Case]",
+        "actualOutput": "[0,2]",
+        "executionTimeMs": 72,
+        "memoryUsedKb": 1372,
+        "isHidden": true
+      }
+    ],
+    "submittedAt": "2026-09-27T14:59:29.817Z",
+    "id": "18074f4b48d24b18dd7fc1dc",
+    "_id": "18074f4b48d24b18dd7fc1dc"
+  },
+  {
+    "userId": "40b0f68cecb13b2fb452992e",
+    "username": "alex_codes",
+    "userProfileImage": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80",
+    "problemId": "a47e8c2843ff449d6eedc730",
+    "problemTitle": "Two Sum",
+    "language": "javascript",
+    "sourceCode": "function twoSum(nums, target) { const map = new Map(); for (let i = 0; i < nums.length; i++) { const diff = target - nums[i]; if (map.has(diff)) return [map.get(diff), i]; map.set(nums[i], i); } return []; }",
+    "status": "Wrong Answer",
+    "testCasesPassed": 4,
+    "totalTestCases": 5,
+    "executionTime": 337,
+    "memoryUsed": 6066,
+    "score": 40,
+    "details": [
+      {
+        "testCaseNumber": 1,
+        "passed": true,
+        "input": "{\"nums\":[2,7,11,15],\"target\":9}",
+        "expectedOutput": "[0,1]",
+        "actualOutput": "[0,1]",
+        "executionTimeMs": 65,
+        "memoryUsedKb": 1236,
+        "isHidden": false
+      },
+      {
+        "testCaseNumber": 2,
+        "passed": true,
+        "input": "{\"nums\":[3,2,4],\"target\":6}",
+        "expectedOutput": "[1,2]",
+        "actualOutput": "[1,2]",
+        "executionTimeMs": 71,
+        "memoryUsedKb": 1335,
+        "isHidden": false
+      },
+      {
+        "testCaseNumber": 3,
+        "passed": true,
+        "input": "{\"nums\":[3,3],\"target\":6}",
+        "expectedOutput": "[0,1]",
+        "actualOutput": "[0,1]",
+        "executionTimeMs": 66,
+        "memoryUsedKb": 1234,
+        "isHidden": false
+      },
+      {
+        "testCaseNumber": 4,
+        "passed": false,
+        "input": "[Hidden Test Case]",
+        "expectedOutput": "[Hidden Test Case]",
+        "actualOutput": "[Hidden Output]",
+        "error": "Expected [0,4], received [2,3]",
+        "executionTimeMs": 68,
+        "memoryUsedKb": 1228,
+        "isHidden": true
+      },
+      {
+        "testCaseNumber": 5,
+        "passed": true,
+        "input": "[Hidden Test Case]",
+        "expectedOutput": "[Hidden Test Case]",
+        "actualOutput": "[0,2]",
+        "executionTimeMs": 67,
+        "memoryUsedKb": 1390,
+        "isHidden": true
+      }
+    ],
+    "submittedAt": "2026-09-27T15:00:01.871Z",
+    "id": "2ad9c8a00e2a2b51786ea555",
+    "_id": "2ad9c8a00e2a2b51786ea555"
+  },
+  {
+    "userId": "40b0f68cecb13b2fb452992e",
+    "username": "alex_codes",
+    "userProfileImage": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80",
+    "problemId": "a47e8c2843ff449d6eedc730",
+    "problemTitle": "Two Sum",
+    "language": "javascript",
+    "sourceCode": "function twoSum(nums, target) { const map = new Map(); for (let i = 0; i < nums.length; i++) { const diff = target - nums[i]; if (map.has(diff)) return [map.get(diff), i]; map.set(nums[i], i); } return []; }",
+    "status": "Wrong Answer",
+    "testCasesPassed": 4,
+    "totalTestCases": 5,
+    "executionTime": 323,
+    "memoryUsed": 5814,
+    "score": 40,
+    "details": [
+      {
+        "testCaseNumber": 1,
+        "passed": true,
+        "input": "{\"nums\":[2,7,11,15],\"target\":9}",
+        "expectedOutput": "[0,1]",
+        "actualOutput": "[0,1]",
+        "executionTimeMs": 77,
+        "memoryUsedKb": 1343,
+        "isHidden": false
+      },
+      {
+        "testCaseNumber": 2,
+        "passed": true,
+        "input": "{\"nums\":[3,2,4],\"target\":6}",
+        "expectedOutput": "[1,2]",
+        "actualOutput": "[1,2]",
+        "executionTimeMs": 63,
+        "memoryUsedKb": 1435,
+        "isHidden": false
+      },
+      {
+        "testCaseNumber": 3,
+        "passed": true,
+        "input": "{\"nums\":[3,3],\"target\":6}",
+        "expectedOutput": "[0,1]",
+        "actualOutput": "[0,1]",
+        "executionTimeMs": 60,
+        "memoryUsedKb": 1281,
+        "isHidden": false
+      },
+      {
+        "testCaseNumber": 4,
+        "passed": false,
+        "input": "[Hidden Test Case]",
+        "expectedOutput": "[Hidden Test Case]",
+        "actualOutput": "[Hidden Output]",
+        "error": "Expected [0,4], received [2,3]",
+        "executionTimeMs": 63,
+        "memoryUsedKb": 1462,
+        "isHidden": true
+      },
+      {
+        "testCaseNumber": 5,
+        "passed": true,
+        "input": "[Hidden Test Case]",
+        "expectedOutput": "[Hidden Test Case]",
+        "actualOutput": "[0,2]",
+        "executionTimeMs": 60,
+        "memoryUsedKb": 1263,
+        "isHidden": true
+      }
+    ],
+    "submittedAt": "2026-09-27T15:00:16.282Z",
+    "id": "e7f3a2cefdb43ef0bf020e6a",
+    "_id": "e7f3a2cefdb43ef0bf020e6a"
+  },
+  {
+    "userId": "40b0f68cecb13b2fb452992e",
+    "username": "alex_codes",
+    "userProfileImage": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80",
+    "problemId": "a47e8c2843ff449d6eedc730",
+    "problemTitle": "Two Sum",
+    "language": "javascript",
+    "sourceCode": "function twoSum(nums, target) { const map = new Map(); for (let i = 0; i < nums.length; i++) { const diff = target - nums[i]; if (map.has(diff)) return [map.get(diff), i]; map.set(nums[i], i); } return []; }",
+    "status": "Accepted",
+    "testCasesPassed": 5,
+    "totalTestCases": 5,
+    "executionTime": 311,
+    "memoryUsed": 5598,
+    "score": 50,
+    "details": [
+      {
+        "testCaseNumber": 1,
+        "passed": true,
+        "input": "{\"nums\":[2,7,11,15],\"target\":9}",
+        "expectedOutput": "[0,1]",
+        "actualOutput": "[0,1]",
+        "executionTimeMs": 68,
+        "memoryUsedKb": 1270,
+        "isHidden": false
+      },
+      {
+        "testCaseNumber": 2,
+        "passed": true,
+        "input": "{\"nums\":[3,2,4],\"target\":6}",
+        "expectedOutput": "[1,2]",
+        "actualOutput": "[1,2]",
+        "executionTimeMs": 60,
+        "memoryUsedKb": 1380,
+        "isHidden": false
+      },
+      {
+        "testCaseNumber": 3,
+        "passed": true,
+        "input": "{\"nums\":[3,3],\"target\":6}",
+        "expectedOutput": "[0,1]",
+        "actualOutput": "[0,1]",
+        "executionTimeMs": 60,
+        "memoryUsedKb": 1283,
+        "isHidden": false
+      },
+      {
+        "testCaseNumber": 4,
+        "passed": true,
+        "input": "[Hidden Test Case]",
+        "expectedOutput": "[Hidden Test Case]",
+        "actualOutput": "[0,5]",
+        "executionTimeMs": 62,
+        "memoryUsedKb": 1467,
+        "isHidden": true
+      },
+      {
+        "testCaseNumber": 5,
+        "passed": true,
+        "input": "[Hidden Test Case]",
+        "expectedOutput": "[Hidden Test Case]",
+        "actualOutput": "[0,2]",
+        "executionTimeMs": 61,
+        "memoryUsedKb": 1309,
+        "isHidden": true
+      }
+    ],
+    "submittedAt": "2026-09-27T15:00:34.019Z",
+    "id": "f21b64d125636f8165e15a18",
+    "_id": "f21b64d125636f8165e15a18"
+  },
+  {
+    "userId": "e4e194fa8adc699c4ce24a15",
+    "username": "admin",
+    "userProfileImage": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80",
+    "problemId": "a47e8c2843ff449d6eedc730",
+    "problemTitle": "Two Sum",
+    "language": "javascript",
+    "sourceCode": "function twoSum(nums, target) {\n  // Write your code here\n  const map = new Map();\n  for (let i = 0; i < nums.length; i++) {\n    const diff = target - nums[i];\n    if (map.has(diff)) {\n      return [map.get(diff), i];\n    }\n    map.set(nums[i], i);\n  }\n  return [];\n}",
+    "status": "Accepted",
+    "testCasesPassed": 5,
+    "totalTestCases": 5,
+    "executionTime": 28,
+    "memoryUsed": 1420,
+    "score": 50,
+    "details": [
+      {
+        "testCaseNumber": 1,
+        "passed": true,
+        "executionTimeMs": 6,
+        "isHidden": false
+      },
+      {
+        "testCaseNumber": 2,
+        "passed": true,
+        "executionTimeMs": 6,
+        "isHidden": false
+      },
+      {
+        "testCaseNumber": 3,
+        "passed": true,
+        "executionTimeMs": 6,
+        "isHidden": false
+      },
+      {
+        "testCaseNumber": 4,
+        "passed": true,
+        "executionTimeMs": 6,
+        "isHidden": true
+      },
+      {
+        "testCaseNumber": 5,
+        "passed": true,
+        "executionTimeMs": 6,
+        "isHidden": true
+      }
+    ],
+    "submittedAt": "2026-09-27T14:04:05.051Z",
+    "id": "54bcf9944795c8fff8751fd5",
+    "_id": "54bcf9944795c8fff8751fd5"
+  },
+  {
+    "userId": "40b0f68cecb13b2fb452992e",
+    "username": "alex_codes",
+    "userProfileImage": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80",
+    "problemId": "b8d272ac44851a447229dd46",
+    "problemTitle": "Valid Palindrome",
+    "language": "javascript",
+    "sourceCode": "function isPalindrome(s) {\n  const cleaned = s.toLowerCase().replace(/[^a-z0-9]/g, '');\n  return cleaned === cleaned.split('').reverse().join('');\n}",
+    "status": "Accepted",
+    "testCasesPassed": 5,
+    "totalTestCases": 5,
+    "executionTime": 19,
+    "memoryUsed": 1210,
+    "score": 20,
+    "details": [
+      {
+        "testCaseNumber": 1,
+        "passed": true,
+        "executionTimeMs": 4,
+        "isHidden": false
+      },
+      {
+        "testCaseNumber": 2,
+        "passed": true,
+        "executionTimeMs": 4,
+        "isHidden": false
+      },
+      {
+        "testCaseNumber": 3,
+        "passed": true,
+        "executionTimeMs": 4,
+        "isHidden": false
+      },
+      {
+        "testCaseNumber": 4,
+        "passed": true,
+        "executionTimeMs": 4,
+        "isHidden": true
+      },
+      {
+        "testCaseNumber": 5,
+        "passed": true,
+        "executionTimeMs": 4,
+        "isHidden": true
+      }
+    ],
+    "submittedAt": "2026-09-27T11:04:05.052Z",
+    "id": "d9e67f9e6c4a6f7364546eaf",
+    "_id": "d9e67f9e6c4a6f7364546eaf"
+  }
+]

@@ -1,0 +1,28 @@
+<div class="daily-challenge-card" *ngIf="!loading && problem">
+  <div class="content-left">
+    <div class="badges-row">
+      <span class="daily-tag">⭐ Daily Challenge</span>
+      <span class="timer">Resets in {{ timeUntilReset }}</span>
+      <span *ngIf="isSolved" class="solved-pill">✓ Solved</span>
+    </div>
+
+    <h2 class="problem-title">{{ problem.title }}</h2>
+
+    <div class="meta-row">
+      <span class="difficulty-badge" [ngClass]="problem.difficulty.toLowerCase()">
+        {{ problem.difficulty }}
+      </span>
+      <span class="category">{{ problem.category }}</span>
+      <span class="points">+{{ problem.points }} XP</span>
+      <span class="pass-rate">{{ problem.acceptanceRate }}% pass rate</span>
+    </div>
+
+    <p class="description">{{ problem.description }}</p>
+  </div>
+
+  <div class="action-right">
+    <button class="solve-btn" (click)="onSolveNow()">
+      {{ isSolved ? 'Solve Again' : 'Solve Now' }} →
+    </button>
+  </div>
+</div>

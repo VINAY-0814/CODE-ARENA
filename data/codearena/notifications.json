@@ -1,0 +1,42 @@
+[
+  {
+    "userId": "e4e194fa8adc699c4ce24a15",
+    "title": "Welcome to CodeArena!",
+    "message": "Explore challenges, earn XP, maintain streaks, and challenge developers in 1v1 battles.",
+    "type": "system",
+    "isRead": false,
+    "createdAt": "2026-09-27T14:58:53.578Z",
+    "id": "4a2a6d25e6f76e1922892230",
+    "_id": "4a2a6d25e6f76e1922892230"
+  },
+  {
+    "userId": "e4e194fa8adc699c4ce24a15",
+    "title": "Welcome to CodeArena!",
+    "message": "Explore challenges, earn XP, maintain streaks, and challenge developers in 1v1 battles.",
+    "type": "system",
+    "isRead": false,
+    "createdAt": "2026-09-27T14:59:52.797Z",
+    "id": "3e0eaa39bec38b02d2938ac0",
+    "_id": "3e0eaa39bec38b02d2938ac0"
+  },
+  {
+    "userId": "40b0f68cecb13b2fb452992e",
+    "title": "Achievement Unlocked: Perfect Score!",
+    "message": "Pass 100% of test cases on your first submission. (+100 XP)",
+    "type": "achievement",
+    "isRead": false,
+    "createdAt": "2026-09-27T15:00:34.021Z",
+    "id": "890136093ccbb852300e53f9",
+    "_id": "890136093ccbb852300e53f9"
+  },
+  {
+    "userId": "e4e194fa8adc699c4ce24a15",
+    "title": "Welcome to CodeArena!",
+    "message": "Explore challenges, earn XP, maintain streaks, and challenge developers in 1v1 battles.",
+    "type": "system",
+    "isRead": false,
+    "createdAt": "2026-09-27T16:04:05.052Z",
+    "id": "08b2a8f3bb75afb45a9f27a1",
+    "_id": "08b2a8f3bb75afb45a9f27a1"
+  }
+]

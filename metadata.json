@@ -1,0 +1,6 @@
+{
+  "name": "CodeArena",
+  "description": "Gamified coding challenge platform where developers code, compete in 1v1 battles, earn XP, maintain streaks, and conquer leaderboards.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

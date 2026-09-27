@@ -1,0 +1,58 @@
+[
+  {
+    "userId": "e4e194fa8adc699c4ce24a15",
+    "achievementId": "0970b763b5c1a369699d45d2",
+    "achievementCode": "first-victory",
+    "unlockedAt": "2026-09-27T14:58:53.577Z",
+    "id": "22e2e81d4cb4928bde150769",
+    "_id": "22e2e81d4cb4928bde150769"
+  },
+  {
+    "userId": "40b0f68cecb13b2fb452992e",
+    "achievementId": "0970b763b5c1a369699d45d2",
+    "achievementCode": "first-victory",
+    "unlockedAt": "2026-09-27T14:58:53.577Z",
+    "id": "945a58c6550fb227d604221f",
+    "_id": "945a58c6550fb227d604221f"
+  },
+  {
+    "userId": "e4e194fa8adc699c4ce24a15",
+    "achievementId": "0970b763b5c1a369699d45d2",
+    "achievementCode": "first-victory",
+    "unlockedAt": "2026-09-27T14:59:52.797Z",
+    "id": "67705838a04b2db75f9256cf",
+    "_id": "67705838a04b2db75f9256cf"
+  },
+  {
+    "userId": "40b0f68cecb13b2fb452992e",
+    "achievementId": "0970b763b5c1a369699d45d2",
+    "achievementCode": "first-victory",
+    "unlockedAt": "2026-09-27T14:59:52.797Z",
+    "id": "30a27072c7cdf7db554a285d",
+    "_id": "30a27072c7cdf7db554a285d"
+  },
+  {
+    "userId": "40b0f68cecb13b2fb452992e",
+    "achievementId": "fc4a57888a70f1356d802577",
+    "achievementCode": "perfect-score",
+    "unlockedAt": "2026-09-27T15:00:34.021Z",
+    "id": "a720b7bab9e2fc5d22ec8fac",
+    "_id": "a720b7bab9e2fc5d22ec8fac"
+  },
+  {
+    "userId": "e4e194fa8adc699c4ce24a15",
+    "achievementId": "0970b763b5c1a369699d45d2",
+    "achievementCode": "first-victory",
+    "unlockedAt": "2026-09-27T16:04:05.052Z",
+    "id": "e30dbdc848dab1ca41949e13",
+    "_id": "e30dbdc848dab1ca41949e13"
+  },
+  {
+    "userId": "40b0f68cecb13b2fb452992e",
+    "achievementId": "0970b763b5c1a369699d45d2",
+    "achievementCode": "first-victory",
+    "unlockedAt": "2026-09-27T16:04:05.052Z",
+    "id": "2e631645d77ac8fe4522c748",
+    "_id": "2e631645d77ac8fe4522c748"
+  }
+]
