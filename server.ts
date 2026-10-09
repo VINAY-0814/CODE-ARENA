@@ -2,6 +2,7 @@ import express, { Request, Response, NextFunction } from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
 import path from 'path';
+import fs from 'fs';
 import { fileURLToPath } from 'url';
 import apiRouter from './server/routes/api.ts';
 import { seedDatabase } from './server/db.ts';
@@ -91,10 +92,46 @@ async function startServer() {
   } else {
     // In production, serve dist folder
     const distPath = path.resolve(__dirname, 'dist');
-    app.use(express.static(distPath));
-    app.get('*', (req: Request, res: Response) => {
-      res.sendFile(path.resolve(distPath, 'index.html'));
-    });
+    const indexPath = path.resolve(distPath, 'index.html');
+
+    // Auto-build fallback if dist/index.html was not generated during deploy
+    if (!fs.existsSync(indexPath)) {
+      console.log('⚡ [Production] dist/index.html missing! Running automatic Vite build...');
+      try {
+        const { execSync } = await import('child_process');
+        execSync('npx vite build', { stdio: 'inherit' });
+      } catch (buildErr: any) {
+        console.error('Auto-build error:', buildErr.message);
+      }
+    }
+
+    if (fs.existsSync(indexPath)) {
+      app.use(express.static(distPath));
+      app.get('*', (req: Request, res: Response) => {
+        res.sendFile(indexPath);
+      });
+    } else {
+      console.warn('⚠️ [Production Warning] dist/index.html not found! Ensure build command ran: "npm run build" or "bun run build".');
+      app.get('*', (req: Request, res: Response) => {
+        res.status(503).send(`
+          <!DOCTYPE html>
+          <html>
+            <head><title>CodeArena — Build Required</title></head>
+            <body style="background:#0D0B0F;color:#FAFAFA;font-family:sans-serif;padding:60px 20px;text-align:center;">
+              <h1 style="color:#A855F7;font-size:28px;">CodeArena — Build Step Required</h1>
+              <p style="color:#A1A1AA;font-size:16px;max-width:600px;margin:16px auto;">The frontend assets in <code>dist/</code> have not been compiled yet.</p>
+              <div style="background:#211A28;padding:20px;border-radius:12px;display:inline-block;margin-top:20px;text-align:left;border:1px solid rgba(168,85,247,0.3);">
+                <p style="margin:0 0 10px 0;color:#FAFAFA;font-weight:bold;">In Render Dashboard Settings:</p>
+                <p style="margin:4px 0;color:#A1A1AA;">Set <strong>Build Command</strong> to:</p>
+                <code style="background:#0D0B0F;padding:6px 12px;border-radius:6px;display:block;color:#22C55E;font-size:14px;margin-top:4px;">bun install && bun run build</code>
+                <p style="margin:12px 0 4px 0;color:#A1A1AA;">Or if using npm:</p>
+                <code style="background:#0D0B0F;padding:6px 12px;border-radius:6px;display:block;color:#22C55E;font-size:14px;margin-top:4px;">npm install && npm run build</code>
+              </div>
+            </body>
+          </html>
+        `);
+      });
+    }
   }
 
   const port = config.port;
