@@ -416,6 +416,27 @@ export const BattleView: React.FC<BattleViewProps> = ({
             </div>
           </div>
         </div>
+
+        {/* Battle Invitation Modal for active arena */}
+        <BattleInviteModal
+          isOpen={showInviteModal}
+          onClose={() => setShowInviteModal(false)}
+          battleId={currentBattle.id}
+          problemId={currentBattle.problemId}
+          problemTitle={currentBattle.problemTitle || battleProblem?.title}
+          defaultDifficulty={battleProblem?.difficulty || 'Easy'}
+          onInviteSent={(oppUsername) => {
+            setInviteFeedback(`Battle invite sent to @${oppUsername}! They received a real-time notification.`);
+            setTimeout(() => setInviteFeedback(null), 4000);
+          }}
+        />
+
+        {inviteFeedback && (
+          <div className="fixed bottom-6 right-6 z-50 p-3.5 bg-[#211A28] border border-[#22C55E]/40 text-[#22C55E] text-xs font-medium rounded-xl shadow-xl flex items-center gap-2 animate-in fade-in duration-200">
+            <CheckCircle2 className="w-4 h-4 shrink-0" />
+            <span>{inviteFeedback}</span>
+          </div>
+        )}
       </div>
     );
   }
@@ -631,9 +652,7 @@ export const BattleView: React.FC<BattleViewProps> = ({
       <BattleInviteModal
         isOpen={showInviteModal}
         onClose={() => setShowInviteModal(false)}
-        battleId={currentBattle?.id}
-        problemId={currentBattle?.problemId}
-        problemTitle={currentBattle?.problemTitle || battleProblem?.title}
+        problemTitle={battleProblem?.title}
         defaultDifficulty={battleProblem?.difficulty || 'Easy'}
         onInviteSent={(oppUsername) => {
           setInviteFeedback(`Battle invite sent to @${oppUsername}! They received a real-time notification.`);

@@ -2,6 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import crypto from 'crypto';
 import bcrypt from 'bcryptjs';
+import { MongoModels, isMongoActive } from './mongo.ts';
 
 const DATA_DIR = path.resolve(process.cwd(), 'data/codearena');
 
@@ -22,6 +23,7 @@ export interface UserDoc {
   xp: number;
   level: number;
   streak: number;
+  rank?: number;
   lastActiveDate: string;
   problemsSolved: number;
   totalSubmissions: number;
@@ -241,6 +243,10 @@ class Collection<T extends { id: string; _id?: string }> {
     return results;
   }
 
+  public getAll(): T[] {
+    return this.find();
+  }
+
   public findById(id: string): T | null {
     const item = this.data.get(id);
     return item ? { ...item } : null;
@@ -255,6 +261,37 @@ class Collection<T extends { id: string; _id?: string }> {
     return null;
   }
 
+  private getMongoModel(): any {
+    const map: Record<string, any> = {
+      users: MongoModels.User,
+      problems: MongoModels.Problem,
+      submissions: MongoModels.Submission,
+      achievements: MongoModels.Achievement,
+      user_achievements: MongoModels.UserAchievement,
+      battles: MongoModels.Battle,
+      battle_participants: MongoModels.BattleParticipant,
+      battle_invites: MongoModels.BattleInvite,
+      notifications: MongoModels.Notification,
+    };
+    return map[this.name];
+  }
+
+  public async syncFromMongo(): Promise<void> {
+    if (!isMongoActive()) return;
+    try {
+      const model = this.getMongoModel();
+      if (!model) return;
+      const docs = await model.find().lean();
+      for (const doc of docs) {
+        const item = { ...doc } as any;
+        if (!item.id && item._id) item.id = String(item._id);
+        this.data.set(item.id, item as T);
+      }
+    } catch (err: any) {
+      console.warn(`[MongoDB Sync] Error loading ${this.name}: ${err.message}`);
+    }
+  }
+
   public insert(doc: Omit<T, 'id' | '_id'> & { id?: string; _id?: string }): T {
     const id = doc.id || doc._id || crypto.randomBytes(12).toString('hex');
     const newDoc = {
@@ -264,6 +301,16 @@ class Collection<T extends { id: string; _id?: string }> {
     } as unknown as T;
     this.data.set(id, newDoc);
     this.save();
+
+    if (isMongoActive()) {
+      const model = this.getMongoModel();
+      if (model) {
+        model.create(newDoc).catch((err: any) =>
+          console.warn(`[MongoDB Sync] Insert error in ${this.name}: ${err.message}`)
+        );
+      }
+    }
+
     return { ...newDoc };
   }
 
@@ -279,12 +326,37 @@ class Collection<T extends { id: string; _id?: string }> {
     };
     this.data.set(id, updated);
     this.save();
+
+    if (isMongoActive()) {
+      const model = this.getMongoModel();
+      if (model) {
+        model
+          .updateOne({ $or: [{ id }, { _id: id }] }, updates)
+          .catch((err: any) =>
+            console.warn(`[MongoDB Sync] Update error in ${this.name}: ${err.message}`)
+          );
+      }
+    }
+
     return { ...updated };
   }
 
   public deleteById(id: string): boolean {
     const exists = this.data.delete(id);
-    if (exists) this.save();
+    if (exists) {
+      this.save();
+
+      if (isMongoActive()) {
+        const model = this.getMongoModel();
+        if (model) {
+          model
+            .deleteOne({ $or: [{ id }, { _id: id }] })
+            .catch((err: any) =>
+              console.warn(`[MongoDB Sync] Delete error in ${this.name}: ${err.message}`)
+            );
+        }
+      }
+    }
     return exists;
   }
 
@@ -312,6 +384,38 @@ export const db = {
 
 // Database Seed Function
 export async function seedDatabase(force: boolean = false) {
+  if (isMongoActive()) {
+    try {
+      await Promise.all([
+        db.users.syncFromMongo(),
+        db.problems.syncFromMongo(),
+        db.submissions.syncFromMongo(),
+        db.achievements.syncFromMongo(),
+        db.userAchievements.syncFromMongo(),
+        db.battles.syncFromMongo(),
+        db.battleParticipants.syncFromMongo(),
+        db.battleInvites.syncFromMongo(),
+        db.notifications.syncFromMongo(),
+      ]);
+
+      const mongoProblemCount = await MongoModels.Problem.countDocuments();
+      if (mongoProblemCount < 300) {
+        console.log(`[MongoDB] Seeding ${db.problems.count()} industry challenges into MongoDB cluster...`);
+        const allProbs = db.problems.getAll();
+        for (const prob of allProbs) {
+          await MongoModels.Problem.updateOne(
+            { slug: prob.slug },
+            { $set: prob },
+            { upsert: true }
+          );
+        }
+        console.log(`[MongoDB] Finished syncing challenges to MongoDB.`);
+      }
+    } catch (e: any) {
+      console.warn('[MongoDB Sync] Initial sync skipped:', e.message);
+    }
+  }
+
   const userCount = db.users.count();
   if (userCount > 0 && !force) {
     return;
